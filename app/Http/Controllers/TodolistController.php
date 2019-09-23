@@ -27,6 +27,7 @@ class TodolistController extends Controller
     public function create()
     {
         //
+        return view('todolists.create');
     }
 
     /**
@@ -38,6 +39,18 @@ class TodolistController extends Controller
     public function store(Request $request)
     {
         //
+        // $todolist = new Todolist();
+        // $todolist->title = $request -> title;
+        // $todolist->description = $request -> description;
+        // $todolist->user_id = Auth::user()->id;
+        // $todolist->save();
+
+        $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
+        Todolist::create($input);
+
+        // return redirect('/todolist/create');
+        return redirect()->back();
     }
 
     /**
