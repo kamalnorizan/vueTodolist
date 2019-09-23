@@ -15,6 +15,8 @@ class TodolistController extends Controller
     public function index()
     {
         //
+        $todolists = Todolist::all();
+        return view('todolists.index',compact('todolists'));
     }
 
     /**
