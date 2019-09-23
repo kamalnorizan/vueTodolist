@@ -63,6 +63,7 @@ class TodolistController extends Controller
     public function show(Todolist $todolist)
     {
         //
+        return view('todolists.show', compact('todolist'));
     }
 
     /**
