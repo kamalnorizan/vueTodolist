@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todolist;
 use Illuminate\Http\Request;
+use Auth;
 
 class TodolistController extends Controller
 {
