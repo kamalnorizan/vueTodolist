@@ -75,6 +75,7 @@ class TodolistController extends Controller
     public function edit(Todolist $todolist)
     {
         //
+        return view('todolists.edit', compact('todolist'));
     }
 
     /**
@@ -87,6 +88,8 @@ class TodolistController extends Controller
     public function update(Request $request, Todolist $todolist)
     {
         //
+        $todolist->update($request->all());
+        return redirect('/todolist');
     }
 
     /**
