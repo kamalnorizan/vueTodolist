@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/todolist', 'TodolistController');
+Route::post('/todolist/delete', 'TodolistController@delete')->name('todolist.delete');

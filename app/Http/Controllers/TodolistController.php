@@ -104,4 +104,10 @@ class TodolistController extends Controller
         $todolist->delete();
         return redirect('/todolist');
     }
+
+    public function delete(Request $request)
+    {
+        Todolist::destroy($request->id);
+        return redirect('/todolist');
+    }
 }
