@@ -165,7 +165,8 @@
                 <div class="modal-footer">
                     {!! Form::open(['route'=> 'todolist.delete', 'method'=>'POST']) !!}
                         <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        {!! Form::hidden('id', '', ['id'=>'id']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -174,5 +175,11 @@
 @endsection
 
 @section('script')
-
+<script>
+    $('#myModal').on('show.bs.modal',function (event){
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        $('#id').val(id);
+    });
+</script>
 @endsection
