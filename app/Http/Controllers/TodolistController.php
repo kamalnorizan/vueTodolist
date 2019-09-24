@@ -20,7 +20,11 @@ class TodolistController extends Controller
     public function index()
     {
         //
-        $todolists = Todolist::all();
+        // dd(Auth::user()->todolist);
+        $todolists = Todolist::with('user.client')->paginate(15);
+        // dd($todolists->first()->user->client->first()->name);
+        // dd($todolists);
+
         return view('todolists.index',compact('todolists'));
     }
 

@@ -118,29 +118,39 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Dashboard <a href="/todolist/create" class="btn btn-sm btn-default pull-right">New Task</a></div>
 
                 <div class="card-body">
                     <table class="table">
                         <tr>
                             <td>Title</td>
                             <td>Description</td>
+                            <td>Created By</td>
+                            <td>Clients of creator</td>
                             <td>Action</td>
                         </tr>
                         @foreach ($todolists as $todolist)
                         <tr>
                             <td>{{$todolist->title}}</td>
                             <td>{{$todolist->Description}}</td>
+                            <td>{{$todolist->user->name}}</td>
+                            <td>
+                                @foreach ($todolist->user->client as $client)
+                                - {{$client->name}} <br>
+                                @endforeach
+                            </td>
                             <td>
                                 {!! Form::open(['route'=>['todolist.destroy',$todolist->id], 'method'=>'DELETE']) !!}
-                                    <a href="/todolist/{{$todolist->id}}" class="btn btn-primary btn-sm">Show</a>
-                                    {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-sm']) !!}
-                            <a href="#myModal" class="btn btn-danger btn-sm" data-id="{{$todolist->id}}" data-toggle="modal">Delete with modal</a>
-                                    {!! Form::close() !!}
+                                {{-- {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-sm']) !!} --}}
+                                <a href="/todolist/{{$todolist->id}}" class="btn btn-primary btn-sm">Show</a>
+                                <a href="/todolist/{{$todolist->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="#myModal" class="btn btn-danger btn-sm" data-id="{{$todolist->id}}" data-toggle="modal">Delete</a>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                         @endforeach
                     </table>
+                    {{ $todolists->links() }}
                 </div>
             </div>
         </div>
