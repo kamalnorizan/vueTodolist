@@ -163,9 +163,9 @@
                     <p>Do you really want to delete these records? This process cannot be undone.</p>
                 </div>
                 <div class="modal-footer">
-                    {!! Form::open('route'=> 'todolist.delete', 'method'=>'POST') !!}
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    {!! Form::open(['route'=> 'todolist.delete', 'method'=>'POST']) !!}
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
                     {!! Form::close() !!}
                 </div>
             </div>
