@@ -18,5 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/todolist', 'TodolistController');
+Route::resource('/todolist', 'TodolistController', [
+    'except' => ['destroy']
+]);
 Route::post('/todolist/delete', 'TodolistController@delete')->name('todolist.delete');
