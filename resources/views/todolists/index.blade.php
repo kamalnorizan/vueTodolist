@@ -18,7 +18,12 @@
                         <tr>
                             <td>{{$todolist->title}}</td>
                             <td>{{$todolist->Description}}</td>
-                            <td><a href="/todolist/{{$todolist->id}}" class="btn btn-primary btn-sm">Show</a></td>
+                            <td>
+                                {!! Form::open(['route'=>['todolist.destroy',$todolist->id], 'method'=>'DELETE']) !!}
+                                    <a href="/todolist/{{$todolist->id}}" class="btn btn-primary btn-sm">Show</a>
+                                    {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
                         @endforeach
                     </table>
