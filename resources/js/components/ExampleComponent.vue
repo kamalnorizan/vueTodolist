@@ -1,32 +1,25 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        <button :type="type" v-text="perkataan"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div>
+    <button :type="test.type" v-text="test.text"></button>
+    {{perkataan}} {{type}}
+  </div>
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
+export default {
+  mounted() {
+    console.log("Component mounted.");
 
-        data: function(){
-            return {
-                test : 'My Button'
-            }
-        },
-        props: [
-            'perkataan', 'type'
-        ]
-    }
+    axios.get("api/vue", {}).then(response => {
+      this.test = response.data;
+    });
+  },
+
+  data: function() {
+    return {
+      test: ""
+    };
+  },
+  props: ["perkataan", "type"]
+};
 </script>

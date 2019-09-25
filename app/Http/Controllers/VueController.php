@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todolist;
 use Illuminate\Http\Request;
+use Auth;
 
 class VueController extends Controller
 {
@@ -48,6 +49,22 @@ class VueController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $task = new Todolist();
+        $task->title = $request->title;
+        $task->Description = $request->description;
+        $task->user_id = Auth::user()->id;
+        $task->save();
+
+        return response()->json([
+            'task' => $task,
+            'message' => 'Task created successfully'
+        ]);
     }
 
     /**
