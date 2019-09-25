@@ -6,7 +6,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <button :type="type" v-text="perkataan"></button>
                     </div>
                 </div>
             </div>
@@ -18,6 +18,15 @@
     export default {
         mounted() {
             console.log('Component mounted.')
-        }
+        },
+
+        data: function(){
+            return {
+                test : 'My Button'
+            }
+        },
+        props: [
+            'perkataan', 'type'
+        ]
     }
 </script>

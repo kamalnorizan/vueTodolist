@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $button = "Button name from controller";
+        return view('home', compact('button'));
     }
 }
