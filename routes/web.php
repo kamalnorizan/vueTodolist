@@ -25,4 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/todolist/delete', 'TodolistController@delete')->name('todolist.delete');
 Route::resource('/todolist', 'TodolistController');
 Route::resource('/task', 'VueController');
+
 Route::post('/vue', 'VueController@store');
+Route::patch('/vue/{id}', 'VueController@update');
+Route::delete('/vue/{id}', 'VueController@destroy');

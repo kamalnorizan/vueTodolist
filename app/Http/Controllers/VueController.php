@@ -99,6 +99,10 @@ class VueController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Todolist::find($request->id)->update($request->all());
+        return response()->json([
+            'message' => 'Updated successfully'
+        ]);
     }
 
     /**
@@ -109,6 +113,12 @@ class VueController extends Controller
      */
     public function destroy($id)
     {
+        $task = Todolist::find($id)->delete();
+        return response()->json([
+            'task' => $task,
+            'message' => 'task has been Deleted!'
+        ]);
         //
+
     }
 }
