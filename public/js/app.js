@@ -1844,7 +1844,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    name: {}
+    name: {},
+    clicked: {},
+    classes: {},
+    index: {}
   }
 });
 
@@ -1895,6 +1898,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ButtonComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ButtonComponent */ "./resources/js/components/ButtonComponent.vue");
+//
+//
 //
 //
 //
@@ -37904,7 +37909,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("button", { class: _vm.classes }, [_vm._v(_vm._s(_vm.name))])
+  return _c(
+    "button",
+    {
+      class: _vm.classes,
+      on: {
+        click: function($event) {
+          return _vm.clicked(_vm.index)
+        }
+      }
+    },
+    [_vm._v(_vm._s(_vm.name))]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37984,37 +38000,22 @@ var render = function() {
             _c(
               "td",
               [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-sm",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.loadUpdateModal(index)
-                      }
-                    }
-                  },
-                  [_vm._v("Edit")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger btn-sm",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteTask(index)
-                      }
-                    }
-                  },
-                  [_vm._v("Delete")]
-                ),
+                _c("button-component", {
+                  attrs: {
+                    clicked: _vm.loadUpdateModal,
+                    index: index,
+                    name: "Edit",
+                    classes: "btn btn-info btn-sm"
+                  }
+                }),
                 _vm._v(" "),
                 _c("button-component", {
-                  staticClass: "btn btn-danger btn-sm",
-                  attrs: { name: "Delete" }
+                  attrs: {
+                    clicked: _vm.deleteTask,
+                    index: index,
+                    name: "Delete",
+                    classes: "btn btn-danger btn-sm"
+                  }
                 })
               ],
               1

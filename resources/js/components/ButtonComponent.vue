@@ -1,11 +1,14 @@
 <template>
-  <button :class="classes">{{name}}</button>
+  <button :class="classes" @click="clicked(index)">{{name}}</button>
 </template>
 
 <script>
 export default {
     props: {
-        name: {}
+        name: {},
+        clicked: {},
+        classes:{},
+        index:{}
     }
 }
 </script>

@@ -16,13 +16,15 @@
           <td>{{task.title}}</td>
           <td>{{task.Description}}</td>
           <td>
-            <button
+            <!-- <button
               @click="loadUpdateModal(index)"
               type="button"
               class="btn btn-primary btn-sm"
             >Edit</button>
-            <button @click="deleteTask(index)" type="button" class="btn btn-danger btn-sm">Delete</button>
-            <button-component name="Delete" class="btn btn-danger btn-sm"></button-component>
+
+            <button @click="deleteTask(index)" type="button" class="btn btn-danger btn-sm">Delete</button> -->
+            <button-component :clicked="loadUpdateModal" :index="index" name="Edit" classes="btn btn-info btn-sm"></button-component>
+            <button-component :clicked="deleteTask" :index="index" name="Delete" classes="btn btn-danger btn-sm"></button-component>
           </td>
         </tr>
       </tbody>
